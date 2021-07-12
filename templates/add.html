@@ -1,0 +1,34 @@
+<head>
+  <!-- Latest compiled and minified CSS -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'app/add.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+<script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+</head>
+    
+    <body>
+  
+<div class="container">
+    <h1 style="margin-left: 25%;">NAMES OF ALL USERS</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Credit</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for Person in Person_list_details %}
+        <tr>
+            
+          <td><a href="{{Person.id}}" style="text-decoration: none; color: black;">{{Person.name|capfirst}}</a></td>
+          <td>{{Person.credit}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+  
+ 
+    </body>

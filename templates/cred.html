@@ -1,0 +1,102 @@
+<head>
+  <!-- Latest compiled and minified CSS -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'app/cred.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+<script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+<div>
+
+        <h1>   Name of Person : 
+        {% for Person in Person_list %}
+        {{Person.name | capfirst}}
+        {% endfor %}
+        </h1>
+        <h1>Present Credits: 
+        {% for Person in Person_list %}
+        {{Person.credit}}
+        {% endfor %}
+        </h1>
+</div>
+<br>
+<br>
+<h2>TRANSFER CREDIT:</h2>
+<br>
+<button type="button" class="btn btn-sucess">
+ <div class="input">
+      
+<form method="POST">
+    <h3>{{ form }}
+    {% csrf_token %}
+    </h3>
+    
+    <button type="submit" class="btn btn-success" style="margin-right:500px; font-size: 30px; ">Submit</button>
+
+      
+</form>
+</div>
+{% if err %}
+         <h3 class="alert alert-danger">You do not have sufficient credits<3h3>
+{% endif %}
+
+{% if errMsg %}
+         <h3 class="alert alert-danger">{{ errMsg }}</h3>
+      {% endif %}
+{% for Person in Person_list %}<br>
+<br>
+<div> 
+<h3>Click Below To Download Previous Transaction As Pdf</h3>
+<br>
+<button class="btn btn-success"><a href="h/{{Person.id}}" style="text-decoration: none; color: white;">DOWNLOAD AS PDF</a></button>
+</div>
+{% endfor %}
+<br>
+<br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>DATE</th>
+            <th>TYPE</th>
+            <th>FROM</th>
+            <th>TO</th>
+            <th>PRESENT CREDITS</th>
+            <th>Credit Transferred</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            {% for Transaction in Transactions %}
+          <tr>
+              <td>{{Transaction.Time}}</td>
+              <td>{% if Transaction.Sender in names %}
+                  Debit
+                  {% else %}
+                  Credit
+                  {% endif %}
+              </td>
+              <td>{{Transaction.Sender| capfirst}}
+              </td>
+              <td>
+                {{ Transaction.Reciever| capfirst}}
+                
+              </td>
+              <td>{% if Transaction.Sender in names %}
+                {{Transaction.Sender_Credit}}
+                {% else %}
+                {{Transaction.Reciever_Credit}}
+                {% endif %}
+                
+              </td>
+              <td>
+                {{Transaction.Credit}}
+              </td>
+              
+            <tr>
+              
+        
+          {% endfor %}
+        </tbody>
+      </table>
+</body>
+

@@ -1,0 +1,65 @@
+<!-- {% for i in obj %}
+<p>{{i}}</p>
+{% endfor %} -->
+<head>
+  <!-- Latest compiled and minified CSS -->
+  {% load static %}
+
+<link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+<script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+</head>
+    <body>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-6"> 
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in obj %}
+                                <tr>
+                                <td><a href=" ">{{i}}</a></td>
+                                </tr>
+                                {% endfor %}
+                             
+                            </tbody>
+                          </table>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                       </div>
+                    <div class="col-sm-6">
+                         <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Credit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in obj1 %}
+                            <tr>
+                            <td>{{i}}</td>
+                            </tr>
+                            {% endfor %}
+                         
+                        </tbody>
+                      </table></div>
+                  </div>
+               
+        
+            </div>
+            <div class="col-sm-8"></div>
+          </div> 
+        
+<div width=100px>
+    
+</div>
+    </body>

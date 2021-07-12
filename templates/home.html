@@ -1,0 +1,30 @@
+<head>
+  <!-- Latest compiled and minified CSS -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'app/home.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+<script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+</head>
+<style>
+  body{
+    background-color:rgb(158, 158, 240);
+  }
+  .jumbotron1{
+    background-color:rgb(158, 158, 240);
+    margin:30px;
+  }
+</style>
+<body>
+  
+  <div class="jumbotron1 text-center">
+    <h1>BANKING MANAGEMENT SYSTEM</h1>
+  </div>
+<div style="margin-left: 30px; margin-right: 30px;">
+    <div class="jumbotron">
+    <h2 class="text-center" >CLICK BELOW TO GET LIST OF ALL USERS</h2><br><br>
+      <p class="lead text-center">
+          <a class="btn btn-primary btn-lg" href="home/add" role="button">VIEW ALL USER</a>
+        </p>
+      </div>
+</div>    
+</body>

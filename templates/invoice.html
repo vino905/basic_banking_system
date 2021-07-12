@@ -1,0 +1,52 @@
+<head>
+  <!-- Latest compiled and minified CSS -->
+  {% load static %}
+
+<link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+<script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+<table class="table">
+  <thead>
+    <tr>
+      <th>DATE</th>
+      <th>TYPE</th>
+      <th>FROM</th>
+      <th>TO</th>
+      <th>PRESENT CREDITS</th>
+      <th>Credit Transferred</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for Transaction in Transactions %}
+      <tr>
+        <td>{{Transaction.Time}}</td>
+        <td>{% if Transaction.Sender in names %}
+            <p style="margin-left: 50px;">Debit</p>
+            {% else %}
+           <p style="margin-left: 50px;"> Credit</p>
+            {% endif %}
+        </td>
+        <td style="margin-left: 40px;">{{Transaction.Sender| capfirst}}
+        </td>
+        <td style="margin-left: 40px;">
+          {{ Transaction.Reciever| capfirst}}
+          
+        </td>
+        <td style="margin-left: 30px;">{% if Transaction.Sender in names %}
+          {{Transaction.Sender_Credit}}
+          {% else %}
+          {{Transaction.Reciever_Credit}}
+          {% endif %}
+          
+        </td>
+        <td style="margin-left: 30px;">
+          {{Transaction.Credit}}
+        </td> 
+        
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</body>
